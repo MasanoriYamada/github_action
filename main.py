@@ -4,4 +4,5 @@ def add(a, b):
 a = 1
 b = 2
 ret = add(a, b)
+print('dev')
 print(a, b, ret)
