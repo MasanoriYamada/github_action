@@ -22,5 +22,4 @@ jobs:
       - name: Execute tests
         run: |
           cd ${GITHUB_WORKSPACE}
-          docker ps
-          docker-compose exec github_action_test nosetests
+          docker-compose exec github_action_python nosetests
