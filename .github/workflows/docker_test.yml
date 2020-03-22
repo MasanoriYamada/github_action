@@ -1,0 +1,25 @@
+name: Nose Test in docker
+
+on: [push, pull_request]
+
+env:
+  PJ_ACTOR: MasanoriYamada
+  PJ_REPO: github_action
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone ${{ env.PJ_REPO }}
+        uses: actions/checkout@v1
+        with:
+          repository: ${{ env.PJ_ACTOR }}/${{ env.PJ_REPO }}
+          ref: refs/heads/master
+      - name: Docker set up
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          docker-compose up -d
+      - name: Execute tests
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          docker-compose exec nosetests

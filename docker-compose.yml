@@ -1,0 +1,11 @@
+version: '2.3'
+
+services:
+  ad:
+    build: ./
+    container_name: "github_action_test"
+    working_dir: "/workspace"
+    volumes:
+    - .:/workspace
+    shm_size: 4G
+    tty: true
